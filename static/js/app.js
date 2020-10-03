@@ -117,18 +117,23 @@ function ShowMetaData(sampleId) {
         // console.log("Data for meta data:");
         // console.log(data);
 
+        // variable to find meta data
         var metadata = data.metadata;
 
+        // filter to find data for specific sample id
         var resultArray = metadata.filter(md => md.id == sampleId);
 
+        // variable to return the first result
         var result = resultArray[0];
 
+        // define where to display meta data results
         var panel = d3.select("#sample-metadata");
         panel.html("");
 
+        // iterate through results to grab keys and values to display in 'Demographic Info' section
         Object.entries(result).forEach(([key, value]) => {
 
-            var textToShow = `SampleId = ${sampleId}`;
+            var textToShow = `${key}: ${value}`;
             panel.append("h6").text(textToShow);
         });
     });
