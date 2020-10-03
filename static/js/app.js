@@ -82,6 +82,21 @@ function ShowMetaData(sampleId) {
 
         console.log("Data for meta data:");
         console.log(data);
+
+        var metadata = data.metadata;
+
+        var resultArray = metadata.filter(md => md.id == sampleId);
+
+        var result = resultArray[0];
+
+        var panel = d3.select("#sample-metadata");
+        panel.html("");
+
+        Object.entries(result).forEach(([key, value]) => {
+
+            var textToShow = `SampleId = ${sampleId}`;
+            panel.append("h6").text(textToShow);
+        });
     });
 }
 
