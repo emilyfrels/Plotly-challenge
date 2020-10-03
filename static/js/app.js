@@ -6,19 +6,40 @@ console.log("Belly Button Biodiversity Dashboard - this is app.js");
 // function to draw bar graph
 function DrawBargraph(sampleId) {
 
+    // console.log to make sure we're drawing bar graph for selected sample
     console.log(`DrawBargraph(${sampleId})`);
+
+    // call for data for bar graph
+    d3.json("samples.json").then((data) => {
+        
+        console.log(data);
+
+    });
 }
 
 // function to draw bubble chart
 function DrawBubblechart(sampleId) {
 
     console.log(`DrawBubblechart(${sampleId})`);
+
+    // call for data for bubble chart
+    d3.json("samples.json").then((data) => {
+
+        console.log(data);
+
+    });
 }
 
 // function to display meta data
 function ShowMetaData(sampleId) {
 
     console.log(`ShowMetaData(${sampleId})`);
+
+    // call for data for meta data
+    d3.json("samples.json").then((data) => {
+
+        console.log(data);
+    });
 }
 
 // function for when user selects new option in dropdown (our event listener for when user selects a new option from dropdown)
