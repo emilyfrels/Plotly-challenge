@@ -12,7 +12,48 @@ function DrawBargraph(sampleId) {
     // call for data for bar graph
     d3.json("samples.json").then((data) => {
         
-        console.log(data);
+        // console.log("Data for bar graph: ");
+        // console.log(data);
+
+        // variable to find the sample data
+        var samples = data.samples;
+
+        // filter to find the samples associated to the sample ID
+        var resultArray = samples.filter(s => s.id == sampleId);
+
+        // variable to return the first result of the sample
+        var result = resultArray[0];
+
+        // variables for the values and labels for the bar graph
+        var otu_ids = result.otu_ids;
+        var otu_labels = result.otu_labels;
+
+        var yticks = otu_ids.slice(0, 10).map(otuId => `OTU ${otuId}`).reverse();
+        
+        // variable for the sample values returned for the sample ID
+        var sample_values = result.sample_values;
+
+        // define bar data
+        var barData = {
+            x: sample_values.slice(0, 10).reverse(),
+            y: yticks,
+            type: "bar",
+            text: otu_labels.slice(0, 10).reverse(),
+            orientation: "h"
+        }
+
+
+        // define bar layout
+        var barLayout = {
+            title: "Top 10 OTUs Found"
+            // define more layout stuff here
+
+        }
+
+
+
+        // draw bar graph
+        Plotly.newPlot("bar", [barData], barLayout);
 
     });
 }
@@ -25,6 +66,7 @@ function DrawBubblechart(sampleId) {
     // call for data for bubble chart
     d3.json("samples.json").then((data) => {
 
+        console.log("Data for bubble chart:");
         console.log(data);
 
     });
@@ -38,6 +80,7 @@ function ShowMetaData(sampleId) {
     // call for data for meta data
     d3.json("samples.json").then((data) => {
 
+        console.log("Data for meta data:");
         console.log(data);
     });
 }
