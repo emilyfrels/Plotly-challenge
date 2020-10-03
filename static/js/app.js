@@ -100,7 +100,7 @@ function DrawBubblechart(sampleId) {
             xaxis: {title: "OTU ID"}
         }
 
-        // draw bar graph
+        // draw bubble chart
         Plotly.newPlot("bubble", [bubbleData], bubbleLayout);
 
     });
@@ -126,7 +126,7 @@ function ShowMetaData(sampleId) {
         // variable to return the first result
         var result = resultArray[0];
 
-        // define where to display meta data results
+        // define where to display meta data results and clear existing data once new sample is selected
         var panel = d3.select("#sample-metadata");
         panel.html("");
 
