@@ -42,15 +42,10 @@ function DrawBargraph(sampleId) {
             orientation: "h"
         }
 
-
         // define bar layout
         var barLayout = {
             title: "Top 10 OTUs Found"
-            // define more layout stuff here
-
         }
-
-
 
         // draw bar graph
         Plotly.newPlot("bar", [barData], barLayout);
@@ -66,8 +61,45 @@ function DrawBubblechart(sampleId) {
     // call for data for bubble chart
     d3.json("samples.json").then((data) => {
 
-        console.log("Data for bubble chart:");
-        console.log(data);
+        // console.log("Data for bubble chart:");
+        // console.log(data);
+
+        // variable to find the sample data
+        var samples = data.samples;
+
+        // filter to find the samples associated to the sample ID
+        var resultArray = samples.filter(s => s.id == sampleId);
+
+        // variable to return the first result of the samples
+        var result = resultArray[0];
+
+        // variables for the values and labels for the bubble chart
+        var otu_ids = result.otu_ids;
+        var otu_labels = result.otu_labels;
+
+        
+        // variable for the sample values returned for the sample ID
+        var sample_values = result.sample_values;
+
+        // define bubble data
+        var bubbleData = {
+            x: otu_ids,
+            y: sample_values,
+            text: otu_labels,
+            mode: 'markers',
+            marker: {
+                size: sample_values,
+                color: otu_ids
+            }
+        }
+
+        // define bubble layout
+        var bubbleLayout = {
+            title: `Bacteria Samples for Subject ID No. ${sampleId}`
+        }
+
+        // draw bar graph
+        Plotly.newPlot("bubble", [bubbleData], bubbleLayout);
 
     });
 }
@@ -80,8 +112,8 @@ function ShowMetaData(sampleId) {
     // call for data for meta data
     d3.json("samples.json").then((data) => {
 
-        console.log("Data for meta data:");
-        console.log(data);
+        // console.log("Data for meta data:");
+        // console.log(data);
 
         var metadata = data.metadata;
 
