@@ -44,7 +44,8 @@ function DrawBargraph(sampleId) {
 
         // define bar layout
         var barLayout = {
-            title: "Top 10 OTUs Found"
+            title: "Top 10 OTUs Found",
+            xaxis: {title: "Number of OTUs"}
         }
 
         // draw bar graph
@@ -95,7 +96,8 @@ function DrawBubblechart(sampleId) {
 
         // define bubble layout
         var bubbleLayout = {
-            title: `Bacteria Samples for Subject ID No. ${sampleId}`
+            title: `Bacteria Samples for Subject ID No. ${sampleId}`,
+            xaxis: {title: "OTU ID"}
         }
 
         // draw bar graph
