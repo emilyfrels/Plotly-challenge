@@ -15,17 +15,24 @@ function DrawBubblechart(sampleId) {
     console.log(`DrawBubblechart(${sampleId})`);
 }
 
-// function for when user selects new option in dropdown
+// function to display meta data
+function ShowMetaData(sampleId) {
+
+    console.log(`ShowMetaData(${sampleId})`);
+}
+
+// function for when user selects new option in dropdown (our event listener for when user selects a new option from dropdown)
 function optionChanged(newSampleId) {
 
     console.log(`User selected ${newSampleId}`);
 
-    // draw graphs on change
+    // draw graphs on change and show meta data
     DrawBargraph(newSampleId);
     DrawBubblechart(newSampleId);
+    ShowMetaData(newSampleId);
 }
 
-// function to initialize dashboard on webpage
+// function to initialize the page
 function InitDashboard() {
     
     // track where we are in the code
@@ -60,6 +67,9 @@ function InitDashboard() {
 
         //draw bubble chart
         DrawBubblechart(sampleId);
+
+        // display meta data
+        ShowMetaData(sampleId);
     });
 }
 
